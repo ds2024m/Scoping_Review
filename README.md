@@ -8,15 +8,15 @@ Fields searched: Title, Abstract, Keywords
 Filters: English; Document types = Article, Book Chapter, Conference Paper; Subject Area = Computer Science  
 Search string:  
 TITLE-ABS-KEY ( "sentiment" OR "opinion mining" OR "affective" OR "affection" OR "affections" ) AND TITLE-ABS-KEY ( "multimodal" OR "multimodality" ) AND TITLE-ABS-KEY ( "summarization" OR "summarize" OR "skimming" OR "abstraction" ) AND ( LIMIT-TO ( DOCTYPE , "ar" ) OR LIMIT-TO ( DOCTYPE , "cp" ) OR LIMIT-TO ( DOCTYPE , "ch" ) ) AND ( LIMIT-TO ( SUBJAREA , "COMP" ) ) AND ( LIMIT-TO ( LANGUAGE , "English" ) )  
-Timestamp created file: 13 de março de 2025, 13∶58∶27  
-Timestamp modified file: 14 de fevereiro de 2025, 14∶35∶14  
+Timestamp file created: March 13, 2025, 13:58:27
+Timestamp file modified: February 14, 2025, 14:35:14
 
 **ACM**  
 Search field: Abstract  
 Search string:  
 (Abstract:(sentiment) OR Abstract:(opinion mining) OR Abstract:(affective) OR Abstract:(affection) OR Abstract:(affections)) AND  (Abstract:(multimodal) OR Abstract:(multimodality)) AND (Abstract:(summarization) OR Abstract:(summarize) OR Abstract:(skimming) OR Abstract:(abstraction))  
-Timestamp created file: 13 de março de 2025, 13∶58∶27  
-Timestamp modified file: 14 de fevereiro de 2025, 14∶52∶04  
+Timestamp file created: March 13, 2025, 13:58:27
+Timestamp file modified: February 14, 2025, 14:52:04
 
 **Science Direct**  
 Fields searched: Title, Abstract, Keywords  
@@ -25,18 +25,18 @@ Limitation: Max 8 Boolean operators per field combined terms to avoid informatio
 Search string: ( "sentiment analysis" OR "opinion mining" OR "affective computing" OR "sentiment classification") AND ( "multimodal" OR "multimodality") AND ( "summarization"  OR "summarize" OR "skimming" OR "abstraction") --> This search string produces an error "Use fewer boolean connectors (max 8 per field)"  
 After search using different combinations of string, it was used this string without losing content: ( "sentiment" OR "affective" OR "opinion mining"  OR "affection") AND ( "multimodal" OR "multimodality") AND ( "summarization"  OR "skimming" OR "abstraction")  
 Filters: article type = research, book chapter  
-Timestamp created file: 13 de março de 2025, 13∶58∶27  
-Timestamp modified file: 14 de fevereiro de 2025, 14∶55∶44  
+Timestamp file created: March 13, 2025, 13:58:27
+Timestamp file modified: February 14, 2025, 14:55:44
 
 **IEEE**  
 Search field: All Metadata  
 Search string: (((("All Metadata":"sentiment") OR ("All Metadata":"opinion mining") OR ("All Metadata":"affective") OR ("All Metadata":""affection"") OR ("All Metadata":"affections")) AND (("All Metadata":"summarization") OR ("All Metadata":"summarize") OR ("All Metadata":"skimming") OR ("All Metadata":"abstraction"))) AND (("All Metadata":"multimodal") OR ("All Metadata":"multimodality")))  
-Timestamp created file: 13 de março de 2025, 13∶58∶27  
-Timestamp modified file: 14 de fevereiro de 2025, 15∶00∶20  
+Timestamp file created: March 13, 2025, 13:58:27
+Timestamp file modified: February 14, 2025, 15:00:20
 
 **ACL**  
 Method: Custom code to search in Title and Abstract  
-Timestamp download file: 13 de fevereiro de 2025, 09∶57∶40  
+Timestamp file downloaded: February 13, 2025, 09:57:40
 The ACL Anthology does not provide an advanced search interface that allows filtering by both title and abstract. Therefore, a custom Python script was used to identify relevant studies. The script processed the full ACL Anthology BibTeX export (anthology_abstracts.bib), which contains metadata including title and abstract fields. Each entry was converted to lowercase and automatically screened for predefined keyword groups corresponding to sentiment/opinion analysis, multimodality, and summarization.  
 Three keyword groups were applied:  
 Sentiment / Opinion / Affective: “sentiment”, “opinion mining”, “affective”, “affection”, “affections”  
