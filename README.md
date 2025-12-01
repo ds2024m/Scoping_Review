@@ -24,7 +24,6 @@ Filters: Research articles, Book chapters
 Limitation: Max 8 Boolean operators per field combined terms to avoid information loss.  
 Search string: ( "sentiment analysis" OR "opinion mining" OR "affective computing" OR "sentiment classification") AND ( "multimodal" OR "multimodality") AND ( "summarization"  OR "summarize" OR "skimming" OR "abstraction") --> This search string produces an error "Use fewer boolean connectors (max 8 per field)"  
 After search using different combinations of string, it was used this string without losing content: ( "sentiment" OR "affective" OR "opinion mining"  OR "affection") AND ( "multimodal" OR "multimodality") AND ( "summarization"  OR "skimming" OR "abstraction")  
-Filters: article type = research, book chapter  
 Timestamp file created: March 13, 2025, 13:58:27  
 Timestamp file modified: February 14, 2025, 14:55:44  
 
