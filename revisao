@@ -1,0 +1,80 @@
+#!/bin/python3
+
+import bibtexparser
+from bibtexparser.bwriter import BibTexWriter
+from bibtexparser.bibdatabase import BibDatabase
+from bibtexparser.bparser import BibTexParser
+import re
+
+#Funcao para encontrar a string
+def BuscaString(buscas = [], bval = 0,year_from=1900):
+  bt = 0
+
+  pattern = r'[\'year\': \']\d{4}\'' 
+  resultado = re.findall(pattern, entrada_str)[0]
+  resultado = re.sub('\W+','', resultado)
+  ano = int(resultado[-4:])
+
+  for str1 in buscas:
+      if (entrada_str.find(str1.lower()) != -1) and (ano >= year_from): bt = bt|bval
+  return bt
+
+#----------------------------------------------------------------------------------------
+#Define caminho dos arquivos de entrada
+entrada =  "anthology_abstracts.bib"
+
+#Define caminho do arquivo de saida intermediario
+saida =  'resultado.bib'
+
+#Strings de Busca
+bitbuscas1 = 1
+buscas1 = ["sentiment","opinion mining", "affective", "affection","affections"]
+
+bitbuscas2 = 2
+buscas2 = ["multimodal","multimodality"]
+
+bitbuscas3 = 4
+buscas3 = ["summarization", "summarize", "skimming", "abstraction"]
+
+#Somar todos os bitwise de buscas
+bitbuscastotal = bitbuscas1 + bitbuscas2 + bitbuscas3
+
+year_from = 0
+#----------------------------------------------------------------------------------------
+
+#Arquivo de entrada
+with open ( entrada , "r" ) as arquivo_entrada :
+
+  #Entrada
+  parser = bibtexparser.bparser.BibTexParser( interpolate_strings = False )
+  bib_database = bibtexparser.load(arquivo_entrada, parser = parser)
+
+  #Saida
+  db = BibDatabase()
+ 
+  
+  #Para cada entrada
+  for entrada in bib_database.entries: 
+    
+    entrada_str = str(entrada).lower()
+    b_val_total = 0
+
+    #Para cada string de busca verifica se existe palavra no texto
+    #Se existir o texto do buscas1 soma 1 com bitwise or
+    #Se existir o texto do buscas2 soma 2 com bitwise or
+    if (bitbuscas1 != 0): b_val_total = b_val_total | BuscaString(buscas1,bitbuscas1,year_from)
+
+    if (bitbuscas2 != 0): b_val_total = b_val_total | BuscaString(buscas2,bitbuscas2,year_from)
+
+    if (bitbuscas3 != 0): b_val_total = b_val_total | BuscaString(buscas3,bitbuscas3,year_from)
+
+    #Verifica se atende os criterios de busca: necessario existir pelo menos um item do conjunto buscas1 e 1 palavra do conjunto buscas2
+    if b_val_total&bitbuscastotal == bitbuscastotal:      
+        db.entries.append(entrada)
+
+  #Arquivo de saida  
+  writer = BibTexWriter()
+  with open(saida, 'w') as bibfile:
+    bibfile.write(writer.write(db))
+
+
